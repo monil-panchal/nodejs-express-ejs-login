@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Online meeting account login</title>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <style>
+        .registration-form {
+            width: 300px;
+            margin: 0 auto;
+            font-family: Tahoma, Geneva, sans-serif;
+        }
+
+        .alert-success {
+            color: #034e00;
+        }
+
+        .alert-failure {
+            color: #ca0000;
+        }
+
+        .registration-form h1 {
+            text-align: center;
+            color: #4d4d4d;
+            font-size: 24px;
+            padding: 20px 0 20px 0;
+        }
+
+        .registration-form input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #254d31;
+            border: 0;
+            box-sizing: border-box;
+            cursor: pointer;
+            font-weight: bold;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="registration-form">
+        <h1>Online meeting account login</h1>
+
+        <div>
+            <% if (locals.success) { %>
+            <div class="alert-success"><%= success.message %></div>
+
+            <form action="redirect/dashboard" method="POST">
+                <input type="hidden" id="userId" name="userId" value=<%= success.user_id %> >
+                <input type="hidden" id="token" name="token" value=<%= success.token %> >
+                <input type="submit" value="Go to dashboard">
+            </form>
+
+            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>
